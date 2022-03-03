@@ -16,15 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'Travel UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xc1791717),
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: const Color(0xc1176a79),
-          background: const Color(0xc1bbdae3),
-        ),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: const Color(0xc160bccd),
+          backgroundColor: const Color(0xc1bbdae3),
+        ).copyWith(),
       ),
       home: const HomeScreen(),
     );
   }
 }
-
-
