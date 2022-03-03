@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travelapp_demo/widgets/destination_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,13 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
         width: 60,
         decoration: BoxDecoration(
           color: _selectedIndex == index ? Theme.of(context).colorScheme.secondary: const Color( // _selectedIndex for color change when selected
-              0xc19eabac),
+              0xc1ddf2f3),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Icon(
           _icons[index],
           size: 25,
-          color: _selectedIndex == index?Theme.of(context).primaryColor: const Color(0xc19eabac),
+          color: _selectedIndex == index?Theme.of(context).primaryColor: const Color(
+              0xc184a1a1),
         ),
       ),
     );
@@ -77,6 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       (MapEntry map) => _buildicon(map.key),
                     )
                     .toList()),
+            const SizedBox(height: 20,),
+            const DestinationCarousel(),
           ],
         ), // used listview because it will be scrollable for all ui
       ),
