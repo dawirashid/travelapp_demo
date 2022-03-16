@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travelapp_demo/widgets/destination_carousel.dart';
+import 'package:travelapp_demo/widgets/hotel_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -81,6 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     .toList()),
             const SizedBox(height: 20,),
             const DestinationCarousel(),
+            const SizedBox(height: 20),
+            const HotelCarousel(),
           ],
         ), // used listview because it will be scrollable for all ui
       ),
