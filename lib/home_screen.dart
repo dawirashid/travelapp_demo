@@ -12,9 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0; // method for selected item that can change
+  int _currentTab = 0;
 
-
-  int _selectedIndex = 0;  // method for selected item that can change
+  void _navigateTabBar(int index){
+    setState(() {
+      _currentTab = index;
+    });
+  }
 
   final List<IconData> _icons = [
     FontAwesomeIcons.plane,
@@ -24,8 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   Widget _buildicon(int index) {
-    return GestureDetector(        // used gesture detector
-      onTap: (){
+    return GestureDetector(
+      // used gesture detector
+      onTap: () {
         setState(() {
           _selectedIndex = index;
         });
@@ -37,15 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 60,
         width: 60,
         decoration: BoxDecoration(
-          color: _selectedIndex == index ? Theme.of(context).colorScheme.secondary: const Color( // _selectedIndex for color change when selected
-              0xc1ddf2f3),
+          color: _selectedIndex == index
+              ? Theme.of(context).colorScheme.secondary
+              : const Color(// _selectedIndex for color change when selected
+                  0xc1ddf2f3),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Icon(
           _icons[index],
           size: 25,
-          color: _selectedIndex == index?Theme.of(context).primaryColor: const Color(
-              0xc184a1a1),
+          color: _selectedIndex == index
+              ? Theme.of(context).primaryColor
+              : const Color(0xc184a1a1),
         ),
       ),
     );
@@ -72,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: _icons
                     .asMap()
                     .entries
@@ -80,12 +89,41 @@ class _HomeScreenState extends State<HomeScreen> {
                       (MapEntry map) => _buildicon(map.key),
                     )
                     .toList()),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const DestinationCarousel(),
             const SizedBox(height: 20),
             const HotelCarousel(),
           ],
         ), // used listview because it will be scrollable for all ui
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: _navigateTabBar,// private
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 30.0,
+            ),
+            label: 'Search'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.map,
+              size: 30.0,
+            ),
+            label: 'Map'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.hotel,
+              size: 30.0,
+            ),
+            label: 'Hotel'
+          ),
+        ],
       ),
     );
   }
