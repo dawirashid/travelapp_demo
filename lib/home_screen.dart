@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0; // method for selected item that can change
   int _currentTab = 0;
 
-  void _navigateTabBar(int index){
+  void _navigateTabBar(int index) { // method for navigate bar
     setState(() {
       _currentTab = index;
     });
@@ -99,30 +99,27 @@ class _HomeScreenState extends State<HomeScreen> {
         ), // used listview because it will be scrollable for all ui
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentTab,
-        onTap: _navigateTabBar,// private
+        currentIndex: _currentTab, // create method
+        onTap: _navigateTabBar, // method for selected on tap
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              size: 30.0,
-            ),
-            label: 'Search'
-          ),
+              icon: Icon(
+                Icons.search,
+                size: 30.0,
+              ),
+              label: 'Search'),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.map,
-              size: 30.0,
-            ),
-            label: 'Map'
-          ),
+              icon: Icon(
+                Icons.map,
+                size: 30.0,
+              ),
+              label: 'Map'),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.hotel,
-              size: 30.0,
-            ),
-            label: 'Hotel'
-          ),
+              icon: Icon(
+                Icons.hotel,
+                size: 30.0,
+              ),
+              label: 'Hotel'),
         ],
       ),
     );
